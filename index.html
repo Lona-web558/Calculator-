@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .calculator {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator input {
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator button {
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="form-group">
+      <input type="text" class="form-control" id="result" readonly>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" onclick="appendToResult('7')">7</button>
+      <button class="btn btn-primary" onclick="appendToResult('8')">8</button>
+      <button class="btn btn-primary" onclick="appendToResult('9')">9</button>
+      <button class="btn btn-primary" onclick="appendToResult('/')">/</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" onclick="appendToResult('4')">4</button>
+      <button class="btn btn-primary" onclick="appendToResult('5')">5</button>
+      <button class="btn btn-primary" onclick="appendToResult('6')">6</button>
+      <button class="btn btn-primary" onclick="appendToResult('*')">*</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" onclick="appendToResult('1')">1</button>
+      <button class="btn btn-primary" onclick="appendToResult('2')">2</button>
+      <button class="btn btn-primary" onclick="appendToResult('3')">3</button>
+      <button class="btn btn-primary" onclick="appendToResult('-')">-</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" onclick="appendToResult('0')">0</button>
+      <button class="btn btn-primary" onclick="appendToResult('.')">.</button>
+      <button class="btn btn-primary" onclick="calculate()">=</button>
+      <button class="btn btn-primary" onclick="appendToResult('+')">+</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-danger" onclick="clearResult()">Clear</button>
+    </div>
+  </div>
+
+  <script>
+    let result = '';
+
+    function appendToResult(value) {
+      result += value;
+      document.getElementById('result').value = result;
+    }
+
+    function calculate() {
+      try {
+        result = eval(result).toString();
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+
+    function clearResult() {
+      result = '';
+      document.getElementById('result').value = '';
+    }
+  </script>
+</body>
+</html>
